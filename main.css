@@ -10,3 +10,21 @@
     bottom: 0;
     right: 0;
 }
+
+.mousePosition {
+    position: fixed;
+    top: auto;
+    right: auto;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3fff399;
+    height: 50px;
+    width: 300px;
+    border-radius: 5px;
+    border: #059451 2px solid;
+    font-size: 18px;
+}
