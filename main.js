@@ -4,7 +4,8 @@ var mapView = new ol.View({
 })
 var map = new ol.Map({
     target: "map",
-    view: mapView
+    view: mapView,
+    controls: []
 })
 var noneTile = new ol.layer.Tile({
     title: "None",
@@ -77,3 +78,44 @@ var scaleControl = new ol.control.ScaleLine({
     text: true
 })
 map.addControl(scaleControl)
+
+var container = document.getElementById("popup")
+var content = document.getElementById("popup-content")
+var closer = document.getElementById("popup-closer")
+
+var popup = new ol.Overlay({
+    element: container,
+    autoPan: true,
+    autoPanAnimation: {
+        duration: 250
+    }
+})
+
+map.addOverlay(popup)
+
+closer.onclick = function() {
+    popup.setPosition(undefined)
+    closer.blur()
+    return false
+}
+
+map.on("singleclick", function(evt) {
+    content.innerHTML = ""
+    var resolution = mapView.getResolution()
+    var url = SBSLinhas.getSource().getFeatureInfoUrl(evt.coordinate, resolution, "EPSG:3857", {
+        'INFO_FORMAT': 'application/json',
+        'propertyName': 'fid,nome,extensao',
+    })
+
+    if (url) {
+        $.getJSON(url, function(data) {
+            var feature = data.features[0]
+            var props = feature.properties
+            content.innerHTML = "<h3> Nome : </h3> <p> " + props.nome.toUpperCase() + "</p> <br> <h3> Extensão : </h3>" +
+                props.extensao.toString().toUpperCase() + "</p>"
+            popup.setPosition(evt.coordinate)
+        })
+    } else {
+        popup.setPosition(undefined)
+    }
+})
