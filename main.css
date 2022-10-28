@@ -78,14 +78,15 @@
 }
 
 .mybutton {
+    display: flex;
     background-color: rgba(22, 85, 167, 0.6);
     color: white;
     font-weight: 700;
-    text-align: center;
     height: 25px;
     width: 25px;
     border-radius: 2px;
     border: none;
+    justify-content: center;
     align-items: center;
 }
 
@@ -101,4 +102,10 @@
     position: relative;
     display: block;
     margin: 10px auto auto 10px;
+}
+
+.fsButtonDiv {
+    position: relative;
+    display: block;
+    margin: 1px auto auto 10px;
 }

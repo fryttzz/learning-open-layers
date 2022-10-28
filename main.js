@@ -119,7 +119,7 @@ map.addControl(homeControl)
     //end of home button
 
 var fsButton = document.createElement("button")
-fsButton.innerHTML = '<img src="resources/images/fullscreen.svg" alt="home" style="width:20px;height:20px;filter:brightness(0) invert(1); vertical-align: middle"></img>'
+fsButton.innerHTML = '<img src="resources/images/fullscreen.svg" alt="fullscreen" style="width:20px;height:20px;filter:brightness(0) invert(1); vertical-align: middle"></img>'
 fsButton.className = 'mybutton'
 
 var fsElement = document.createElement("div")
@@ -131,7 +131,16 @@ var fsControl = new ol.control.Control({
 })
 
 fsButton.addEventListener("click", () => {
-    var mapEle = document
+    var mapEle = document.getElementById("map")
+    if (mapEle.requestFullscreen) {
+        mapEle.requestFullscreen()
+    } else if (mapEle.msRequestFullscreen) {
+        mapEle.msRequestFullscreen()
+    } else if (mapEle.mozRequestFullscreen) {
+        mapEle.mozRequestFullscreen()
+    } else if (mapEle.webkitRequestFullscreen) {
+        map.webkitRequestFullscreen()
+    }
 })
 
 map.addControl(fsControl)
