@@ -99,6 +99,44 @@ closer.onclick = function() {
     return false
 }
 
+var homeButton = document.createElement("button")
+homeButton.innerHTML = '<img src="resources/images/home.svg" alt="home" style="width:20px;height:20px;filter:brightness(0) invert(1); vertical-align: middle"></img>'
+homeButton.className = 'mybutton'
+
+var homeElement = document.createElement("div")
+homeElement.className = 'homeButtonDiv'
+homeElement.appendChild(homeButton)
+
+var homeControl = new ol.control.Control({
+    element: homeElement
+})
+
+homeButton.addEventListener("click", () => {
+    location.href = "index.html"
+})
+
+map.addControl(homeControl)
+    //end of home button
+
+var fsButton = document.createElement("button")
+fsButton.innerHTML = '<img src="resources/images/fullscreen.svg" alt="home" style="width:20px;height:20px;filter:brightness(0) invert(1); vertical-align: middle"></img>'
+fsButton.className = 'mybutton'
+
+var fsElement = document.createElement("div")
+fsElement.className = 'fsButtonDiv'
+fsElement.appendChild(fsButton)
+
+var fsControl = new ol.control.Control({
+    element: fsElement
+})
+
+fsButton.addEventListener("click", () => {
+    var mapEle = document
+})
+
+map.addControl(fsControl)
+    //end of fullscreen button
+
 map.on("singleclick", function(evt) {
     content.innerHTML = ""
     var resolution = mapView.getResolution()
@@ -112,7 +150,7 @@ map.on("singleclick", function(evt) {
             var feature = data.features[0]
             var props = feature.properties
             content.innerHTML = "<h3> Nome : </h3> <p> " + props.nome.toUpperCase() + "</p> <br> <h3> Extensão : </h3>" +
-                props.extensao.toString().toUpperCase() + "</p>"
+                props.extensao.toFixed(2).toString().toUpperCase() + " km</p>"
             popup.setPosition(evt.coordinate)
         })
     } else {

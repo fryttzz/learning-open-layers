@@ -76,3 +76,29 @@
 .ol-popup-closer:after {
     content: "X";
 }
+
+.mybutton {
+    background-color: rgba(22, 85, 167, 0.6);
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    height: 25px;
+    width: 25px;
+    border-radius: 2px;
+    border: none;
+    align-items: center;
+}
+
+.mybutton:hover {
+    background-color: rgba(0, 60, 136, 1);
+}
+
+.mybutton.clicked:hover {
+    background-color: rgba(22, 170, 35, 1);
+}
+
+.homeButtonDiv {
+    position: relative;
+    display: block;
+    margin: 10px auto auto 10px;
+}
