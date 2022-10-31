@@ -43,6 +43,15 @@ var SBSLinhas = new ol.layer.Tile({
         visible: true
     })
 })
+var SBSLinhaTroncais = new ol.layer.Tile({
+    title: "Linhas Troncais do Sistema de Linhas de São Bento do Sul",
+    source: new ol.source.TileWMS({
+        url: "http://192.168.1.166:8080/geoserver/sao_bento_do_sul/wms",
+        params: { "LAYERS": "sao_bento_do_sul:linhas_troncais", "TILED": true },
+        serviceType: "geoserver",
+        visible: true
+    })
+})
 var SBSTerminais = new ol.layer.Tile({
     title: "Terminais do Sistema de Linhas de São Bento do Sul",
     source: new ol.source.TileWMS({
@@ -54,7 +63,7 @@ var SBSTerminais = new ol.layer.Tile({
 })
 var overlaysGroup = new ol.layer.Group({
     title: "Overlays",
-    layers: [SBSLimite, SBSLinhas, SBSTerminais],
+    layers: [SBSLimite, SBSLinhaTroncais, SBSLinhas, SBSTerminais],
     fold: true
 })
 map.addLayer(overlaysGroup)
