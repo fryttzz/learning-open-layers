@@ -110,6 +110,18 @@
     margin: 1px auto auto 10px;
 }
 
+.lengthButtonDiv {
+    position: relative;
+    display: block;
+    margin: 1px auto auto 10px;
+}
+
+.areaButtonDiv {
+    position: relative;
+    display: block;
+    margin: 1px auto auto 10px;
+}
+
 .ol-tooltip {
     position: relative;
     background: rgba(0, 0, 0, 0.5);
