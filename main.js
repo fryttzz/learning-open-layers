@@ -18,9 +18,19 @@ var osmTile = new ol.layer.Tile({
     type: "base",
     source: new ol.source.OSM()
 })
+var bingMapsAerial = new ol.layer.Tile({
+    title: "Bing Aerial",
+    preload: Infinity,
+    visible: true,
+    type: "base",
+    source: new ol.source.BingMaps({
+        key: 'api-key',
+        imagerySet: 'Aerial',
+    })
+});
 var baseGroup = new ol.layer.Group({
     title: "Base Maps",
-    layers: [noneTile, osmTile],
+    layers: [noneTile, osmTile, bingMapsAerial],
     fold: true
 })
 map.addLayer(baseGroup)
